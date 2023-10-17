@@ -1,7 +1,7 @@
 import Banner from "./banner";
 // import BottomPlayer from "./BottomPlayer";
 import Ipod from "./ipod";
-// import TrackList from "./TrackList";
+import TrackList from "./track-list";
 
 const MainContent = () => {
   return (
@@ -10,8 +10,9 @@ const MainContent = () => {
       <div className="flex flex-col justify-center">
         <Ipod />
       </div>
+
+      <TrackList />
       {/*
-    <TrackList />
       <BottomPlayer /> */}
     </div>
   );
