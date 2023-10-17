@@ -1,5 +1,7 @@
+"use client";
+
 import Banner from "./banner";
-// import BottomPlayer from "./BottomPlayer";
+import BottomPlayer from "./bottom-player";
 import Ipod from "./ipod";
 import TrackList from "./track-list";
 
@@ -12,8 +14,7 @@ const MainContent = () => {
       </div>
 
       <TrackList />
-      {/*
-      <BottomPlayer /> */}
+      <BottomPlayer />
     </div>
   );
 };
