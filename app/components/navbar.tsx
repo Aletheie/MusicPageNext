@@ -83,7 +83,7 @@ const Navbar = () => {
     <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col ">
       <div className="m-8 flex flex-col gap-10 mt-10">
         {linksData.map((link, index) => (
-          <Link href={link.path} passHref key={index} className="flex gap-4">
+          <Link href={link.path} key={index} className="flex gap-4">
             {link.icon}
             <h1>{link.text}</h1>
           </Link>
