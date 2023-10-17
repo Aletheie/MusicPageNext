@@ -17,10 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <section className="grid grid-cols-12 w-full h-screen bg-[#ededed]">
-        <Navbar />
-        <body className={inter.className}>{children}</body>
-      </section>
+      <body className={inter.className}>
+        <section className="grid grid-cols-12 w-full h-screen bg-[#ededed]">
+          <Navbar />
+          {children}
+        </section>
+      </body>
     </html>
   );
 }
