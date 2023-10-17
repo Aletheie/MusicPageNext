@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { MdAddBox } from "react-icons/md";
 
-//import Player from "./Player";
+import Player from "./player";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -80,8 +80,8 @@ const Navbar = () => {
   //   };
 
   return (
-    <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col justify-between">
-      <div className="m-6 flex flex-col gap-10">
+    <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col ">
+      <div className="m-8 flex flex-col gap-10 mt-10">
         {linksData.map((link, index) => (
           <Link href={link.path} passHref key={index} className="flex gap-4">
             {link.icon}
@@ -89,7 +89,7 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
-      {/* <Player /> */}
+      <Player />
       {/* {isLogged === "Logged Out" ? (
         <Link
           icon={<FaUserPlus className="text-3xl fill-gray-600" />}
