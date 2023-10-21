@@ -47,7 +47,7 @@ const linksData = [
 ];
 
 const Navbar = () => {
-  //const [isLogged, setIsLogged] = useState<Login>("Logged Out");
+  const [isLogged, setIsLogged] = useState<Login>("Logged Out");
   //   useEffect(() => {
   //     axios
   //       .post("http://localhost:8080/api/login/auth", "hii", {
@@ -80,33 +80,29 @@ const Navbar = () => {
   //   };
 
   return (
-    <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col ">
+    <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col">
       <div className="m-8 flex flex-col gap-10 mt-10">
         {linksData.map((link, index) => (
           <Link href={link.path} key={index} className="flex gap-4">
             {link.icon}
-            <h1>{link.text}</h1>
+            <p>{link.text}</p>
           </Link>
         ))}
       </div>
       <Player />
-      {/* {isLogged === "Logged Out" ? (
-        <Link
-          icon={<FaUserPlus className="text-3xl fill-gray-600" />}
-          text="Login"
-          divParams="mb-9"
-          path="/login"
-        />
+      {isLogged === "Logged Out" ? (
+        <Link href={"/login"} className="flex gap-4 m-8 mt-20">
+          <FaUserPlus className="text-3xl fill-gray-600" />
+          <p>Login</p>
+        </Link>
       ) : (
-        <div onClick={handleClick}>
-          <Link
-            icon={<FaUserMinus className="text-3xl fill-gray-600" />}
-            text="Logout"
-            divParams="mb-9"
-            path="/"
-          />
+        <div onClick={() => console.log("hi")}>
+          <Link href={"/"} className="flex gap-4 m-8">
+            <FaUserMinus className="text-3xl fill-gray-600 mt-20" />
+            <p>Logout</p>
+          </Link>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
