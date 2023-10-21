@@ -12,7 +12,6 @@ const MainContent = () => {
       <div className="flex flex-col justify-center">
         <Ipod />
       </div>
-
       <TrackList />
       <BottomPlayer />
     </div>
