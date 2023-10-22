@@ -9,3 +9,30 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Song {
+  id            String   @id @default(cuid()) @map("_id")
+  songName      String
+  songAuthor    String
+  isFilledHeart Boolean
+  songFile      SongFile @relation(fields: [songFileId], references: [id])
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  songFileId    String
+}
+
+model SongFile {
+  id    String @id @default(cuid()) @map("_id")
+  path  String
+  title String
+  type  String
+  Song  Song[]
+}
+
+model User {
+  id           String @id @default(cuid()) @map("_id")
+  name         String
+  email        String @unique
+  passwordHash String
+  Song         Song[]
+}
