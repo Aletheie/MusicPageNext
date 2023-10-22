@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import cd from "@/public/icons8-music-record-64.png";
-import FileInput from "./inputs/file-input";
-import TextInput from "./inputs/text-input";
+import FileInput from "@/app/components/inputs/file-input";
+import TextInput from "@/app/components/inputs/text-input";
 import axios from "axios";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import Image from "next/image";
