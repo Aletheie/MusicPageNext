@@ -32,14 +32,15 @@ const Songs = () => {
     },
   ]);
 
-  useEffect(() => {
+  useEffect((): void => {
     axios
-      .post<SongType[]>("http://localhost:8080/songs", "hii", {
+      .post<SongType[]>("http://localhost:3000/api/songs", {
         withCredentials: true,
       })
       .then((res) => {
-        setSongList(res.data);
-        setGlobalSongList(res.data);
+        console.log(res.data);
+        // setSongList(res.data);
+        // setGlobalSongList(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
