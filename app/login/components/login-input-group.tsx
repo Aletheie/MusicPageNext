@@ -13,13 +13,13 @@ interface Props {
 }
 
 const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [passwordHash, setPasswordHash] = useState("");
 
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (!email || !password) {
+    if (!email || !passwordHash) {
       alert("Please fill in all required fields");
       return;
     }
@@ -31,28 +31,27 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
     //   alert("Please enter a password that meets the minimum requirements");
     //   return;
     // }
-
-    //     axios
-    //       .post(
-    //         "http://localhost:8080/api/login",
-    //         {
-    //           username,
-    //           email,
-    //           password,
-    //         },
-    //         { withCredentials: true }
-    //       )
-    //       .then((res) => {
-    //         console.log(res);
-    //         alert("You have successfully logged in!");
-    //       })
-    //       .catch((err: AxiosError) => {
-    //         console.log(err);
-    //         alert(err.response?.data || "Something went wrong");
-    //       });
-    //     setUsername("");
-    //     setEmail("");
-    //     setPassword("");
+    axios
+      .post(
+        "http://localhost:3000/api/login",
+        {
+          name,
+          email,
+          passwordHash,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res);
+        alert("You have successfully logged in!");
+      })
+      .catch((err: AxiosError) => {
+        console.log(err);
+        alert(err.response?.data || "Something went wrong");
+      });
+    setName("");
+    setEmail("");
+    setPasswordHash("");
   };
 
   return (
@@ -73,8 +72,8 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
               <TextInput
                 placeholder="Username"
                 type="text"
-                setInputText={setUsername}
-                inputText={username}
+                setInputText={setName}
+                inputText={name}
               />
             )}
             <TextInput
@@ -86,8 +85,8 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
             <TextInput
               placeholder="Password"
               type="password"
-              setInputText={setPassword}
-              inputText={password}
+              setInputText={setPasswordHash}
+              inputText={passwordHash}
             />
           </div>
           <button
