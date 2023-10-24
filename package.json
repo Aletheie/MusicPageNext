@@ -16,6 +16,7 @@
     "@types/uuid": "^9.0.5",
     "autoprefixer": "10.4.16",
     "axios": "^1.5.1",
+    "bcrypt": "^5.1.1",
     "eslint": "8.51.0",
     "eslint-config-next": "13.5.5",
     "next": "13.5.5",
@@ -31,5 +32,8 @@
     "use-sound": "^4.0.1",
     "uuid": "^9.0.1",
     "zustand": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.1"
   }
 }
