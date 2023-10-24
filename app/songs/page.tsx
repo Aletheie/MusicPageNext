@@ -31,6 +31,18 @@ const Songs = () => {
       },
     },
   ]);
+
+  useEffect(() => {
+    axios
+      .post<SongType[]>("http://localhost:8080/songs", "hii", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setSongList(res.data);
+        setGlobalSongList(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   //   const { setGlobalSongList } = useMusicStore((s) => ({
   //     setGlobalSongList: s.setGlobalSongList,
   //   }));
