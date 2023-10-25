@@ -30,7 +30,7 @@ const AddSongInputGroup = () => {
     formData.append("songAuthor", songAuthor);
     formData.append("songFile", songFile as File);
     axios
-      .post("http://localhost:8080/api/songs", formData, {
+      .post("http://localhost:3000/api/songs", formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
