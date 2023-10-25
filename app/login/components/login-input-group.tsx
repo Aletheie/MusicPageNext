@@ -47,7 +47,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       })
       .catch((err: AxiosError) => {
         console.log(err);
-        alert(err.response?.data || "Something went wrong");
+        alert(err.message || "Something went wrong");
       });
     setName("");
     setEmail("");
