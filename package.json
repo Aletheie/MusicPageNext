@@ -21,7 +21,6 @@
     "eslint-config-next": "13.5.5",
     "next": "13.5.5",
     "next-auth": "^4.24.3",
-    "next-connect": "^1.0.0",
     "next-navigation": "^1.0.6",
     "postcss": "8.4.31",
     "prisma": "^5.4.2",
