@@ -1,5 +1,6 @@
-import { NextMiddleware, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import { MiddlewareFactory } from "@/utils/middleware-factory";
 
 const prisma = new PrismaClient();
 
@@ -27,8 +28,8 @@ const userSongCount = async (
   return userSongs.length;
 };
 
-export function checkSongLimit(): NextMiddleware {
-  return async (request) => {
+export const checkSongLimit: MiddlewareFactory = () => {
+  return async (request: NextRequest) => {
     try {
       const count = await userSongCount(request);
       if (typeof count === "number" && count >= 5) {
@@ -44,4 +45,4 @@ export function checkSongLimit(): NextMiddleware {
       });
     }
   };
-}
+};
