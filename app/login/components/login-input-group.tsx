@@ -5,6 +5,7 @@ import TextInput from "@/app/components/inputs/text-input";
 import axios, { AxiosError } from "axios";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
 
 interface Props {
   icon: StaticImageData;
@@ -44,6 +45,11 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       .then((res) => {
         console.log(res);
         alert("You have successfully logged in!");
+        signIn("credentials", {
+          email,
+          password: passwordHash,
+          callbackUrl: "http://localhost:3000/",
+        });
       })
       .catch((err: AxiosError) => {
         console.log(err);
