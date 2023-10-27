@@ -11,6 +11,7 @@ import {
 import { MdAddBox } from "react-icons/md";
 import Player from "./player";
 import { signOut, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 const linksData = [
   {
@@ -44,6 +45,15 @@ const linksData = [
 
 const Navbar = () => {
   const { status } = useSession();
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+    }
+  }, [status]);
 
   return (
     <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col">
@@ -56,16 +66,16 @@ const Navbar = () => {
         ))}
       </div>
       <Player />
-      {status === "authenticated" ? (
+      {!isLogged ? (
         <Link href={"/login"} className="flex gap-4 m-8 mt-20">
           <FaUserPlus className="text-3xl fill-gray-600" />
           <p>Login</p>
         </Link>
       ) : (
         <div onClick={() => signOut()}>
-          <Link href={"/"} className="flex gap-4 m-8">
-            <FaUserMinus className="text-3xl fill-gray-600 mt-20" />
-            <p>Logout</p>
+          <Link href={"/"} className="flex gap-4 m-8 mt-20">
+            <FaUserMinus className="text-3xl fill-gray-600" />
+            <p>{isLogged && "Logout"}</p>
           </Link>
         </div>
       )}
