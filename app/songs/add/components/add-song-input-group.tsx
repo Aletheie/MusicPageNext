@@ -14,7 +14,7 @@ const AddSongInputGroup = () => {
   const [songFile, setSongFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!songName || !songAuthor || !songFile) {
       alert("Please fill in all required fields");
@@ -24,31 +24,31 @@ const AddSongInputGroup = () => {
       alert("Please select an MP3");
       return;
     }
+
     setLoading(true);
     const formData = new FormData();
-    formData.append("songName", songName);
-    formData.append("songAuthor", songAuthor);
-    formData.append("songFile", songFile as File);
-    axios
-      .post("http://localhost:3000/api/songs", formData, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "With-Credentials": "true",
-        },
-      })
-      .then((res) => {
-        setLoading(false);
-        console.log(res);
-        alert("You have successfully added a song!");
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(err.response.data.message || "Something went wrong");
-      })
-      .finally(() => {
-        setLoading(false);
+    formData.append("file", songFile as File);
+    formData.append("upload_preset", "nthxnjhd" as string);
+
+    try {
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/dgj3s3q6m/video/upload`,
+        formData
+      );
+
+      console.log(response.data.url);
+      await axios.post("/api/songs", {
+        songName,
+        songAuthor,
+        songUrl: response.data.url,
+        bitRate: response.data.bit_rate,
+        duration: response.data.duration,
+        format: response.data.format,
       });
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
 
     setSongName("");
     setSongAuthor("");
