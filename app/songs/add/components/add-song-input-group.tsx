@@ -7,8 +7,10 @@ import TextInput from "@/app/components/inputs/text-input";
 import axios from "axios";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const AddSongInputGroup = () => {
+  const { status, data } = useSession();
   const [songName, setSongName] = useState("");
   const [songAuthor, setSongAuthor] = useState("");
   const [songFile, setSongFile] = useState<File | null>(null);
@@ -38,9 +40,11 @@ const AddSongInputGroup = () => {
 
       console.log(response.data.url);
       await axios.post("/api/songs", {
+        status,
+        data: data?.user,
         songName,
         songAuthor,
-        songUrl: response.data.url,
+        path: response.data.url,
         bitRate: response.data.bit_rate,
         duration: response.data.duration,
         format: response.data.format,
