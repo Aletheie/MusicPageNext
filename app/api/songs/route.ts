@@ -1,6 +1,19 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import { upload } from "@/cloudinary/index";
+
+interface Body {
+  status: string;
+  data: {
+    email: string;
+    name: string;
+  };
+  songName: string;
+  songAuthor: string;
+  path: string;
+  bitRate: number;
+  duration: number;
+  format: string;
+}
 
 const prisma = new PrismaClient();
 
@@ -13,36 +26,38 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  upload().single("songFile");
+  const body: Body = await request.json();
+  if (body.status === "authenticated") {
+    const user = await prisma.user.findUnique({
+      where: { email: body.data.email },
+    });
+    if (!user) {
+      return NextResponse.error();
+    }
 
-  const user = await prisma.user.findUnique({
-    where: {
-      email: body.email,
-    },
-  });
-  if (user == null) return NextResponse.json({ message: "User not found" });
+    console.log(body, user);
 
-  if (!body.songName)
-    return NextResponse.json({ message: "Song name is required" });
-  if (!body.songAuthor)
-    return NextResponse.json({ message: "Song author is required" });
-  if (!body.songFile)
-    return NextResponse.json({ message: "Song file is required" });
-
-  const newSong = await prisma.song.create({
-    data: {
-      songName: body.songName,
-      songAuthor: user.name,
-      songFile: body.songFile,
-      isFilledHeart: false,
-      user: {
-        connect: {
-          id: user?.id,
-        },
+    const songFile = await prisma.songFile.create({
+      data: {
+        path: body.path,
+        duration: body.duration,
+        bitRate: body.bitRate,
+        format: body.format,
       },
-    },
-  });
+    });
 
-  console.log(newSong);
+    const song = await prisma.song.create({
+      data: {
+        songName: body.songName,
+        songAuthor: body.songAuthor,
+        isFilledHeart: false,
+        userId: user.id,
+        songFileId: songFile.id,
+      },
+    });
+
+    return NextResponse.json(song);
+  } else {
+    return NextResponse.redirect("/login");
+  }
 }
