@@ -22,11 +22,12 @@ model Song {
 }
 
 model SongFile {
-  id    String @id @default(cuid()) @map("_id")
-  path  String
-  title String
-  type  String
-  Song  Song[]
+  id       String @id @default(cuid()) @map("_id")
+  path     String
+  duration Int
+  bitRate  Int
+  format   String
+  Song     Song[]
 }
 
 model User {
