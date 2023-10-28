@@ -4,8 +4,11 @@ export interface SongType {
   _id?: string;
   isFilledHeart: boolean;
   songFile: {
+    _id?: string;
+    duration: number;
+    bitRate: number;
+    format: string;
     name: string;
-    type: string;
     path: string;
   };
 }

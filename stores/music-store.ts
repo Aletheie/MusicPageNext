@@ -18,8 +18,11 @@ const useMusicStore = create<Store>((set) => ({
     _id: "",
     isFilledHeart: false,
     songFile: {
+      _id: "",
+      duration: 0,
+      bitRate: 0,
+      format: "",
       name: "",
-      type: "",
       path: "",
     },
   },
