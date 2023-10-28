@@ -4,7 +4,7 @@ import { useState } from "react";
 import cd from "@/public/icons8-music-record-64.png";
 import FileInput from "@/app/components/inputs/file-input";
 import TextInput from "@/app/components/inputs/text-input";
-import axios from "axios";
+//import axios from "axios";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
@@ -28,35 +28,41 @@ const AddSongInputGroup = () => {
     }
 
     setLoading(true);
-    const formData = new FormData();
-    formData.append("file", songFile as File);
-    formData.append("upload_preset", "nthxnjhd" as string);
 
-    try {
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/dgj3s3q6m/video/upload`,
-        formData
-      );
+    const randomNum = Math.floor(Math.random() * 4000) + 2000;
 
-      console.log(response.data.url);
-      await axios.post("/api/songs/add", {
-        status,
-        data: data?.user,
-        songName,
-        songAuthor,
-        path: response.data.url,
-        bitRate: response.data.bit_rate,
-        duration: response.data.duration,
-        format: response.data.format,
-      });
+    setTimeout(() => {
+      setSongName("");
+      setSongAuthor("");
+      setSongFile(null);
       setLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
+      alert("Vypadá to, že momentálně Vám nemohu vyhovět 🤧");
+    }, randomNum);
+    // const formData = new FormData();
+    // formData.append("file", songFile as File);
+    // formData.append("upload_preset", "nthxnjhd" as string);
 
-    setSongName("");
-    setSongAuthor("");
-    setSongFile(null);
+    // try {
+    //   const response = await axios.post(
+    //     `https://api.cloudinary.com/v1_1/dgj3s3q6m/video/upload`,
+    //     formData
+    //   );
+
+    //   console.log(response.data.url);
+    //   await axios.post("/api/songs/add", {
+    //     status,
+    //     data: data?.user,
+    //     songName,
+    //     songAuthor,
+    //     path: response.data.url,
+    //     bitRate: response.data.bit_rate,
+    //     duration: response.data.duration,
+    //     format: response.data.format,
+    //   });
+    //   setLoading(false);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   return (
