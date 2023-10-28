@@ -24,12 +24,12 @@ const Track = ({ song }: Props) => {
     })
   );
 
-  //   useEffect(() => {
-  //     if (!isGlobalPlaying) {
-  //       setIsPlaying(false);
-  //       pause();
-  //     }
-  //   }, [isGlobalPlaying]);
+  useEffect(() => {
+    if (!isGlobalPlaying) {
+      setIsPlaying(false);
+      pause();
+    }
+  }, [isGlobalPlaying, pause]);
 
   const handlePlayPauseClick = () => {
     if (isPlaying) {

@@ -1,26 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import useMusicStore from "@/stores/music-store";
 import { ScaleLoader } from "react-spinners";
-//import useMusicStore from "../stores/musicStore";
 
 const Player = () => {
-  //   const { song } = useMusicStore((s) => ({ song: s.song }));
-  //   const { isGlobalPlaying } = useMusicStore((s) => ({
-  //     isGlobalPlaying: s.isGlobalPlaying,
-  //   }));
-
-  const [song, setSong] = useState({
-    songName: "hello",
-    songAuthor: "hello",
-    isFilledHeart: false,
-    songFile: {
-      name: "hello",
-      type: "hello",
-      path: "hello",
-    },
-  });
-  const [isGlobalPlaying, setIsGlobalPlaying] = useState(true);
+  const { isGlobalPlaying, song } = useMusicStore((s) => ({
+    isGlobalPlaying: s.isGlobalPlaying,
+    song: s.song,
+  }));
 
   return (
     <div className="text-sm flex flex-col items-center mt-9">
