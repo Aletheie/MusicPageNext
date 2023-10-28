@@ -39,7 +39,7 @@ const AddSongInputGroup = () => {
       );
 
       console.log(response.data.url);
-      await axios.post("/api/songs", {
+      await axios.post("/api/songs/add", {
         status,
         data: data?.user,
         songName,
