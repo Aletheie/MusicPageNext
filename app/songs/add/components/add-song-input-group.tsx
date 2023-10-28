@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 
 const AddSongInputGroup = () => {
-  const { status, data } = useSession();
+  //const { status, data } = useSession();
   const [songName, setSongName] = useState("");
   const [songAuthor, setSongAuthor] = useState("");
   const [songFile, setSongFile] = useState<File | null>(null);
