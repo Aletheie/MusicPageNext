@@ -1,63 +1,34 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
 interface Body {
   status: string;
   data: {
-    email: string;
-    name: string;
+    user: {
+      email: string;
+      name: string;
+    };
   };
-  songName: string;
-  songAuthor: string;
-  path: string;
-  bitRate: number;
-  duration: number;
-  format: string;
 }
 
 const prisma = new PrismaClient();
 
-const dataSource = "https://jsonplaceholder.typicode.com/todos";
-
-export async function GET() {
-  const res = await fetch(dataSource);
-  const todos: any[] = await res.json();
-  return NextResponse.json(todos);
-}
-
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const body: Body = await request.json();
   if (body.status === "authenticated") {
     const user = await prisma.user.findUnique({
-      where: { email: body.data.email },
+      where: { email: body.data.user.email },
     });
     if (!user) {
-      return NextResponse.error();
+      return NextResponse.json({ error: "User not found" });
     }
-
-    console.log(body, user);
-
-    const songFile = await prisma.songFile.create({
-      data: {
-        path: body.path,
-        duration: body.duration,
-        bitRate: body.bitRate,
-        format: body.format,
-      },
+    const songs = await prisma.song.findMany({
+      where: { userId: user.id },
+      include: { songFile: true },
     });
 
-    const song = await prisma.song.create({
-      data: {
-        songName: body.songName,
-        songAuthor: body.songAuthor,
-        isFilledHeart: false,
-        userId: user.id,
-        songFileId: songFile.id,
-      },
-    });
-
-    return NextResponse.json(song);
+    return NextResponse.json(songs);
   } else {
-    return NextResponse.redirect("/login");
+    return NextResponse.json({ error: "User not authenticated" });
   }
 }
