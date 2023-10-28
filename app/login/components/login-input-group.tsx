@@ -28,10 +28,10 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       alert("Please enter a valid email address");
       return;
     }
-    // if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
-    //   alert("Please enter a password that meets the minimum requirements");
-    //   return;
-    // }
+    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(passwordHash)) {
+      alert("Please enter a password that meets the minimum requirements");
+      return;
+    }
     axios
       .post(
         "http://localhost:3000/api/login",
@@ -76,7 +76,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
           <div className="mt-5 lg:mt-8">
             {oneMoreInput && (
               <TextInput
-                placeholder="Username"
+                placeholder="Uživatelské jméno"
                 type="text"
                 setInputText={setName}
                 inputText={name}
@@ -89,7 +89,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
               inputText={email}
             />
             <TextInput
-              placeholder="Password"
+              placeholder="Heslo"
               type="password"
               setInputText={setPasswordHash}
               inputText={passwordHash}

@@ -23,11 +23,11 @@ const FileInput = ({ setSelectedFile, selectedFile }: Props) => {
           <AiOutlineCloudUpload className="w-12 h-12 text-violet-500 hover:text-violet-600 dark:text-gray-400" />
           <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
             <span className="font-semibold">
-              {selectedFile ? selectedFile.name : "Click to upload"}
+              {selectedFile ? selectedFile.name : "Klikni pro upload"}
             </span>
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            {!selectedFile && "or drag and drop"}
+            {!selectedFile && "nebo přetáhni soubor sem"}
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             MP3 (MAX. 10MB)

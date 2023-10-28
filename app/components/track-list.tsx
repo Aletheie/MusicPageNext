@@ -27,7 +27,7 @@ const TrackList = () => {
 
   return (
     <div className=" text-left mx-10 md:ml-[55%] mt-16 font-bold text-3xl w-full md:w-[60%] lg:w-[45%] ">
-      <p className="">Top Tracks</p>
+      <p className="">Top Skladby</p>
       {globalSongList.length > 1 ? (
         <>
           <Track song={globalSongList[0]} />
@@ -39,10 +39,10 @@ const TrackList = () => {
         </>
       ) : (
         <p className="text-gray-700 font-semibold text-xl mt-5">
-          No songs found. <br />
-          You can add them{" "}
+          Nenalezeny žádné skladby <br />
+          Můžete je přidat{" "}
           <Link href="/songs/add" className="text-blue-500">
-            here
+            zde
           </Link>
         </p>
       )}

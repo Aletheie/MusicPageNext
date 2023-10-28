@@ -16,23 +16,23 @@ import { useEffect, useState } from "react";
 const linksData = [
   {
     icon: <AiFillHome className="text-3xl fill-gray-600" />,
-    text: "Home",
+    text: "Domov",
     path: "/",
   },
   {
     icon: <MdAddBox className="text-3xl fill-gray-600" />,
-    text: "Add",
+    text: "Přidat",
     path: "/songs/add",
   },
   {
     icon: <FaLayerGroup className="text-2xl fill-gray-600 ml-0.5" />,
-    text: "Songs",
+    text: "Skladby",
 
     path: "/songs",
   },
   {
     icon: <AiFillHeart className="text-3xl fill-gray-600" />,
-    text: "Hearts",
+    text: "Srdce",
 
     path: "/songs/heart",
   },
@@ -69,7 +69,7 @@ const Navbar = () => {
       {!isLogged ? (
         <Link href={"/login"} className="flex gap-4 m-8 mt-20">
           <FaUserPlus className="text-3xl fill-gray-600" />
-          <p>Login</p>
+          <p>Přihlášení</p>
         </Link>
       ) : (
         <div onClick={() => signOut()}>

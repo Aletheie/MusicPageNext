@@ -80,13 +80,13 @@ const AddSongInputGroup = () => {
           <FileInput selectedFile={songFile} setSelectedFile={setSongFile} />
           <div className="mt-8">
             <TextInput
-              placeholder="Song name"
+              placeholder="Jméno skladby"
               type="text"
               setInputText={setSongName}
               inputText={songName}
             />
             <TextInput
-              placeholder="Song author"
+              placeholder="Jméno autora"
               type="text"
               setInputText={setSongAuthor}
               inputText={songAuthor}
