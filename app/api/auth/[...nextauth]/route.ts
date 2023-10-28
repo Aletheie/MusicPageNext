@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import bcrypt from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const prisma = new PrismaClient();
 
-export const authOptions = {
+const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -34,5 +34,5 @@ export const authOptions = {
   ],
 };
 
-export const authHandler = NextAuth(authOptions);
+const authHandler = NextAuth(authOptions);
 export { authHandler as GET, authHandler as POST };

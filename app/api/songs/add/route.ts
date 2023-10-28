@@ -1,6 +1,8 @@
 // import { NextResponse } from "next/server";
 // import { PrismaClient } from "@prisma/client";
 
+import { NextResponse } from "next/server";
+
 // interface Body {
 //   status: string;
 //   data: {
@@ -53,3 +55,7 @@
 //     return NextResponse.redirect("http://localhost:3000/login");
 //   }
 // }
+
+export function GET() {
+  return NextResponse.redirect("http://localhost:3000/login");
+}
