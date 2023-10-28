@@ -30,8 +30,23 @@ const TrackList = () => {
     },
   };
 
+  const defaultSong2: SongType = {
+    songName: "Ukázková skladba 2",
+    songAuthor: "Winning Elevation",
+    _id: "uhfoferubfi",
+    isFilledHeart: false,
+    songFile: {
+      _id: "uhfoiefubfi",
+      duration: 0,
+      bitRate: 0,
+      format: "",
+      name: "Ukázková skladba",
+      path: "https://res.cloudinary.com/dgj3s3q6m/video/upload/v1698520225/MusicPage/winning-elevation-111355_mykii4.mp3",
+    },
+  };
+
   useEffect(() => {
-    setGlobalSongList([defaultSong]);
+    setGlobalSongList([defaultSong, defaultSong2]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setGlobalSongList]);
 
