@@ -15,7 +15,7 @@ const Player = () => {
         {isGlobalPlaying && <ScaleLoader color="#4b5563" />}
       </div>
       <p className="font-bold mt-3">
-        {song.songName.length ? song.songName : "No Song is playing"}
+        {song.songName.length ? song.songName : "Nehraje žádná skladba"}
       </p>
       <p className="text-gray-700 font-medium">
         {song.songAuthor.length ? song.songAuthor : " - "}
