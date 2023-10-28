@@ -69,13 +69,13 @@ const Navbar = () => {
       {!isLogged ? (
         <Link href={"/login"} className="flex gap-4 m-8 mt-20">
           <FaUserPlus className="text-3xl fill-gray-600" />
-          <p>Přihlášení</p>
+          <p>Přihlásit</p>
         </Link>
       ) : (
         <div onClick={() => signOut()}>
           <Link href={"/"} className="flex gap-4 m-8 mt-20">
             <FaUserMinus className="text-3xl fill-gray-600" />
-            <p>{isLogged && "Logout"}</p>
+            <p>{isLogged && "Odhlásit"}</p>
           </Link>
         </div>
       )}
