@@ -21,15 +21,15 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!email || !passwordHash) {
-      alert("Please fill in all required fields");
+      alert("Vyplňte prosím všechna povinná pole");
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-      alert("Please enter a valid email address");
+      alert("Zadejte prosím platnou e-mailovou adresu");
       return;
     }
     if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(passwordHash)) {
-      alert("Please enter a password that meets the minimum requirements");
+      alert("Zadejte prosím heslo, které splňuje minimální požadavky");
       return;
     }
     axios
@@ -44,7 +44,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       )
       .then((res) => {
         console.log(res);
-        alert("You have successfully logged in!");
+        alert("Úspěšně jste se přihlásili!");
         signIn("credentials", {
           email,
           password: passwordHash,
@@ -53,7 +53,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       })
       .catch((err: AxiosError) => {
         console.log(err);
-        alert(err.message || "Something went wrong");
+        alert(err.message || "Něco se pokazilo :(");
       });
     setName("");
     setEmail("");
