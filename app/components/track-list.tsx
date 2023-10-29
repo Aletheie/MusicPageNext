@@ -41,7 +41,7 @@ const TrackList = () => {
       bitRate: 0,
       format: "",
       name: "Ukázková skladba",
-      path: "https://res.cloudinary.com/dgj3s3q6m/video/upload/v1698520225/MusicPage/winning-elevation-111355_mykii4.mp3",
+      path: "https://res.cloudinary.com/dgj3s3q6m/video/upload/v1698585341/MusicPage/winning_qcaqsi.mp3",
     },
   };
 
