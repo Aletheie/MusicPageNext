@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@prisma/client':
+    specifier: ^5.4.2
+    version: 5.4.2(prisma@5.4.2)
   autoprefixer:
     specifier: 10.4.16
     version: 10.4.16(postcss@8.4.31)
@@ -23,9 +26,6 @@ dependencies:
   next-navigation:
     specifier: ^1.0.6
     version: 1.0.6
-  prisma:
-    specifier: ^5.4.2
-    version: 5.4.2
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -52,9 +52,6 @@ dependencies:
     version: 4.4.3(@types/react@18.2.28)(react@18.2.0)
 
 devDependencies:
-  '@prisma/client':
-    specifier: ^5.4.2
-    version: 5.4.2(prisma@5.4.2)
   '@types/bcrypt':
     specifier: ^5.0.1
     version: 5.0.1
@@ -79,6 +76,9 @@ devDependencies:
   postcss:
     specifier: 8.4.31
     version: 8.4.31
+  prisma:
+    specifier: ^5.4.2
+    version: 5.4.2
   typescript:
     specifier: 5.2.2
     version: 5.2.2
@@ -331,11 +331,11 @@ packages:
     dependencies:
       '@prisma/engines-version': 5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574
       prisma: 5.4.2
-    dev: true
+    dev: false
 
   /@prisma/engines-version@5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574:
     resolution: {integrity: sha512-wvupDL4AA1vf4TQNANg7kR7y98ITqPsk6aacfBxZKtrJKRIsWjURHkZCGcQliHdqCiW/hGreO6d6ZuSv9MhdAA==}
-    dev: true
+    dev: false
 
   /@prisma/engines@5.4.2:
     resolution: {integrity: sha512-fqeucJ3LH0e1eyFdT0zRx+oETLancu5+n4lhiYECyEz6H2RDskPJHJYHkVc0LhkU4Uv7fuEnppKU3nVKNzMh8g==}
