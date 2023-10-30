@@ -28,10 +28,10 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       alert("Zadejte prosím platnou e-mailovou adresu");
       return;
     }
-    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(passwordHash)) {
-      alert("Zadejte prosím heslo, které splňuje minimální požadavky");
-      return;
-    }
+    // if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(passwordHash)) {
+    //   alert("Zadejte prosím heslo, které splňuje minimální požadavky");
+    //   return;
+    // }
     axios
       .post(
         "http://localhost:3000/api/login",
