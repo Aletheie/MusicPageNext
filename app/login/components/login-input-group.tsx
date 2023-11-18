@@ -32,32 +32,38 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
     //   alert("Zadejte prosím heslo, které splňuje minimální požadavky");
     //   return;
     // }
-    axios
-      .post(
-        "/api/login",
-        {
-          name,
-          email,
-          passwordHash,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log(res);
-        alert("Úspěšně jste se přihlásili!");
-        signIn("credentials", {
-          email,
-          password: passwordHash,
-          //callbackUrl: "http://localhost:3000/",
-        });
-      })
-      .catch((err: AxiosError) => {
-        console.log(err);
-        alert(err.message || "Něco se pokazilo :(");
-      });
-    setName("");
-    setEmail("");
-    setPasswordHash("");
+    // axios
+    //   .post(
+    //     "/api/login",
+    //     {
+    //       name,
+    //       email,
+    //       passwordHash,
+    //     },
+    //     { withCredentials: true }
+    //   )
+    //   .then((res) => {
+    //     console.log(res);
+    //     alert("Úspěšně jste se přihlásili!");
+    //     signIn("credentials", {
+    //       email,
+    //       password: passwordHash,
+    //       //callbackUrl: "http://localhost:3000/",
+    //     });
+    //   })
+    //   .catch((err: AxiosError) => {
+    //     console.log(err);
+    //     alert(err.message || "Něco se pokazilo :(");
+    //   });
+
+    const randomNum = Math.floor(Math.random() * 4000) + 2000;
+
+    setTimeout(() => {
+      setName("");
+      setEmail("");
+      setPasswordHash("");
+      alert("Vypadá to, že momentálně Vám nemohu vyhovět 🤧");
+    }, randomNum);
   };
 
   return (
