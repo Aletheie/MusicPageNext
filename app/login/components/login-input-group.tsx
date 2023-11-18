@@ -34,7 +34,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
     // }
     axios
       .post(
-        "http://localhost:3000/api/login",
+        "/api/login",
         {
           name,
           email,
@@ -48,7 +48,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
         signIn("credentials", {
           email,
           password: passwordHash,
-          callbackUrl: "http://localhost:3000/",
+          //callbackUrl: "http://localhost:3000/",
         });
       })
       .catch((err: AxiosError) => {
